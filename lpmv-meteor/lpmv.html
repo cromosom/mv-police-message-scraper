@@ -1,0 +1,48 @@
+<head>
+  <title>lpmv</title>
+</head>
+
+<body>
+  {{> list}}
+
+</body>
+
+<template name="list">
+	<div class="container">
+	<br>
+	<div class="input-group">
+	  <input type="text" class="form-control input">
+	  <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+	</div>
+	<br>
+		<ul class="list-group">
+			{{#each meldung}}
+		  		<a class="list-group-item" data-toggle="modal" data-target="#{{_id.toHexString}}">
+				<strong>{{title}}</strong><br>
+		  		{{subTitle}}</a>
+	
+				<!-- Modal -->
+				<div class="modal fade" id="{{_id.toHexString}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				        <h4 class="modal-title" id="myModalLabel">{{title}}</h4> 
+				        <i>{{subTitle}}</i>
+				      </div>
+				      <div class="modal-body">				   
+				       	{{{text}}}
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+
+		  	{{/each}}
+		</ul>
+	</div>
+</template>

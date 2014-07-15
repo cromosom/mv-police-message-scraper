@@ -1,0 +1,21 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "bootstrap-3": {},
+      "easy-search": {}
+    },
+    "packages": {
+      "bootstrap-3": {
+        "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
+        "tag": "v3.1.1-1",
+        "commit": "63dd38968828bb8963636df93e9a1c45e2dfe67e"
+      },
+      "easy-search": {
+        "git": "https://github.com/matteodem/meteor-easy-search.git",
+        "tag": "v0.4.0",
+        "commit": "6ab16e6c4b505d6d02de8be7e1633f6561af971f"
+      }
+    }
+  }
+}
