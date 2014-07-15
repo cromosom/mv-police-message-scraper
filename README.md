@@ -1,1 +1,1 @@
-Python scraper to pull police messages from Landespolizei Mecklenburg-Vorpommern in Germany. And push it into an meteor-App for realtime notification about new incidents, storing and searching police messages.
+Python scraper to pull police messages from Landespolizei Mecklenburg-Vorpommern in Germany and to push it into an meteor-app for realtime notification about new incidents, storing and searching police messages.
