@@ -6,12 +6,14 @@ import time
 first = True
 
 while True:
+	#connecting to meteor.js DB
 	client = MongoClient('localhost', 3001)
 	db = client.meteor
 	meldungen = db.meldungen
 
 	opener = urllib2.build_opener()
 
+	#getting list of police-PM urls
 	url = ('http://www.polizei.mvnet.de/cms2/Polizei_prod/Polizei/de/oeff/Pressemitteilungen/Aktuelle_Pressemitteilungen/index.jsp')
 	ourUrl = opener.open(url).read()
 
@@ -27,6 +29,7 @@ while True:
 	if first:
 		pidList.reverse()
 
+	#scraping police-PMs
 	for meldung in pidList:
 		url = ('http://www.polizei.mvnet.de/cms2/Polizei_prod/Polizei/de/oeff/Pressemitteilungen/Aktuelle_Pressemitteilungen/index.jsp' + meldung)
 		ourUrl = opener.open(url).read()
@@ -42,6 +45,7 @@ while True:
 
 		text = soup.find('div', class_ = 'freitext')
 
+		#pushing PMs to meteor.js monogoDB
 		if meldungen.find({'subTitle' : subTitle.text}).count() == 0:
 			post = {"title": title.text, "date" : date, "subTitle": subTitle.text, "revier": revier.text, "text": text.prettify(formatter="html"), "time": time.strftime('%Y%m%d%H%M%S')}
 			result = meldungen.insert(post)
